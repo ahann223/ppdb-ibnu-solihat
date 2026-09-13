@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPDB Ibnu Solihat — Penerimaan Peserta Didik Baru</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16213E;
+    --navy-2:#1E2E52;
+    --blue:#2E5AAC;
+    --blue-2:#3E6FC4;
+    --blue-soft:#7C97C9;
+    --slate:#5B6572;
+    --slate-soft:#8A93A3;
+    --paper:#F1F3F6;
+    --paper-2:#E4E8EE;
+    --white:#FFFFFF;
+    --ink:#161B26;
+    --line:#D6DCE5;
+    --focus:#3E6FC4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    margin:0;
+    font-weight:600;
+    color:var(--navy);
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  :focus-visible{outline:2px solid var(--focus); outline-offset:3px;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(241,243,246,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-mark{
+    width:42px; height:42px; border-radius:10px;
+    background:linear-gradient(155deg, var(--blue) 0%, var(--navy) 100%);
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-family:'Fraunces',serif; font-weight:600; font-size:19px;
+    flex-shrink:0;
+  }
+  .brand-text{display:flex; flex-direction:column; line-height:1.2;}
+  .brand-text strong{font-family:'Fraunces',serif; font-size:17px; color:var(--navy); font-weight:600;}
+  .brand-text span{font-size:11.5px; color:var(--slate); letter-spacing:0.02em;}
+  .nav-links{display:flex; gap:30px; align-items:center;}
+  .nav-links a{font-size:14.5px; font-weight:500; color:var(--slate); transition:color .18s;}
+  .nav-links a:hover{color:var(--blue);}
+  .nav-cta{
+    background:var(--blue); color:#fff !important; padding:10px 20px;
+    border-radius:8px; font-size:14px; font-weight:600;
+    transition:background .18s;
+  }
+  .nav-cta:hover{background:var(--navy);}
+  .nav-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .nav-toggle span{display:block; width:22px; height:2px; background:var(--navy); margin:5px 0; border-radius:2px;}
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed; top:73px; left:0; right:0; background:var(--white);
+      flex-direction:column; align-items:flex-start; gap:0;
+      border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden; transition:max-height .28s ease;
+    }
+    .nav-links.open{max-height:420px;}
+    .nav-links a{width:100%; padding:14px 28px; border-bottom:1px solid var(--paper-2);}
+    .nav-cta{margin:14px 28px;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative; overflow:hidden;
+    background:var(--navy);
+    padding:76px 0 92px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; top:-30%; right:-10%;
+    width:640px; height:640px; border-radius:50%;
+    background:radial-gradient(circle, rgba(62,111,196,0.35) 0%, rgba(62,111,196,0) 68%);
+  }
+  .hero::after{
+    content:"";
+    position:absolute; left:0; bottom:0; width:100%; height:1px;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  }
+  .hero-grid{
+    position:relative; z-index:2;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;
+  }
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:9px;
+    color:var(--blue-soft); font-size:13.5px; font-weight:600;
+    margin-bottom:22px;
+  }
+  .hero-eyebrow .dot{width:7px; height:7px; border-radius:50%; background:#5BD68A;}
+  .hero h1{
+    color:#fff; font-size:clamp(34px, 5vw, 54px); line-height:1.08;
+    max-width:12ch;
+  }
+  .hero h1 em{font-style:italic; color:var(--blue-soft);}
+  .hero p.lead{
+    color:#C6CEDD; font-size:16.5px; max-width:46ch; margin:22px 0 32px;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:14px 26px; border-radius:9px; font-weight:600; font-size:15px;
+    cursor:pointer; border:1px solid transparent; transition:all .18s;
+  }
+  .btn-primary{background:var(--blue-2); color:#fff;}
+  .btn-primary:hover{background:#4f7fd6; transform:translateY(-1px);}
+  .btn-ghost{background:transparent; color:#fff; border-color:rgba(255,255,255,0.35);}
+  .btn-ghost:hover{border-color:#fff;}
+
+  .hero-panel{
+    position:relative; background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:18px; padding:32px;
+    backdrop-filter:blur(6px);
+  }
+  .hero-panel .year{
+    font-family:'Fraunces',serif; font-size:64px; color:#fff; font-weight:600;
+    line-height:1; letter-spacing:-0.02em;
+  }
+  .hero-panel .year small{
+    display:block; font-family:'Plus Jakarta Sans',sans-serif; font-size:13.5px;
+    color:var(--blue-soft); font-weight:600; margin-bottom:6px;
+  }
+  .hero-stats{
+    display:grid; grid-template-columns:1fr 1fr; gap:18px;
+    margin-top:26px; padding-top:26px; border-top:1px solid rgba(255,255,255,0.14);
+  }
+  .hero-stats div strong{display:block; color:#fff; font-size:22px; font-family:'Fraunces',serif;}
+  .hero-stats div span{color:#9FADC4; font-size:12.5px;}
+
+  /* ===== SECTION LABEL ===== */
+  section{padding:88px 0;}
+  @media (max-width:640px){section{padding:64px 0;}}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head .kicker{color:var(--blue); font-weight:700; font-size:13.5px; margin-bottom:10px; display:block;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px); line-height:1.18;}
+  .section-head p{color:var(--slate); margin-top:14px; font-size:15.5px; max-width:56ch;}
+
+  /* ===== TENTANG ===== */
+  .about{background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:start;}
+  @media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .about-figure{
+    background:linear-gradient(160deg, var(--paper) 0%, var(--paper-2) 100%);
+    border:1px solid var(--line); border-radius:16px; padding:34px;
+    position:relative;
+  }
+  .about-figure .quote-mark{
+    font-family:'Fraunces',serif; font-size:64px; color:var(--blue); line-height:1; opacity:0.35;
+  }
+  .about-figure p{font-family:'Fraunces',serif; font-size:20px; color:var(--navy); line-height:1.5; margin-top:8px;}
+  .about-figure .sign{margin-top:20px; font-size:13.5px; color:var(--slate); font-weight:600;}
+  .about-body p{color:var(--slate); font-size:15.5px; margin:0 0 16px;}
+  .about-facts{
+    list-style:none; padding:0; margin:26px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:16px;
+  }
+  .about-facts li{
+    border-left:2px solid var(--blue); padding-left:14px;
+  }
+  .about-facts strong{display:block; font-family:'Fraunces',serif; color:var(--navy); font-size:19px;}
+  .about-facts span{color:var(--slate-soft); font-size:12.5px;}
+
+  /* ===== KEUNGGULAN ===== */
+  .adv-list{display:flex; flex-direction:column; border-top:1px solid var(--line);}
+  .adv-item{
+    display:grid; grid-template-columns:70px 1fr; gap:26px;
+    padding:28px 0; border-bottom:1px solid var(--line);
+  }
+  .adv-item .num{font-family:'Fraunces',serif; font-size:26px; color:var(--blue-soft); font-weight:600;}
+  .adv-item h3{font-size:19px; margin-bottom:6px; color:var(--navy);}
+  .adv-item p{color:var(--slate); font-size:14.8px; margin:0; max-width:64ch;}
+
+  /* ===== JALUR PENDAFTARAN ===== */
+  .tracks{background:var(--navy); position:relative; overflow:hidden;}
+  .tracks .section-head h2, .tracks .section-head .kicker{color:#fff;}
+  .tracks .section-head .kicker{color:var(--blue-soft);}
+  .tracks .section-head p{color:#AEB9CE;}
+  .track-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:900px){.track-grid{grid-template-columns:1fr;}}
+  .track-card{
+    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12);
+    border-radius:14px; padding:28px; display:flex; flex-direction:column; gap:14px;
+  }
+  .track-card .tag{
+    align-self:flex-start; font-size:12px; font-weight:700; color:var(--blue-soft);
+    border:1px solid rgba(124,151,201,0.5); padding:4px 10px; border-radius:20px;
+  }
+  .track-card h3{color:#fff; font-size:20px;}
+  .track-card p{color:#B7C1D6; font-size:14.3px; margin:0;}
+  .track-card ul{margin:6px 0 0; padding-left:18px; color:#B7C1D6; font-size:13.8px;}
+  .track-card ul li{margin-bottom:5px;}
+
+  /* ===== ALUR / TIMELINE ===== */
+  .flow{background:var(--white);}
+  .flow-line{position:relative; padding-left:36px;}
+  .flow-line::before{
+    content:""; position:absolute; left:10px; top:6px; bottom:6px; width:2px;
+    background:var(--line);
+  }
+  .flow-step{position:relative; padding-bottom:38px;}
+  .flow-step:last-child{padding-bottom:0;}
+  .flow-step::before{
+    content:""; position:absolute; left:-36px; top:2px; width:22px; height:22px;
+    border-radius:50%; background:var(--white); border:2px solid var(--blue);
+  }
+  .flow-step.done::before{background:var(--blue);}
+  .flow-step h3{font-size:18px; margin-bottom:6px; color:var(--navy);}
+  .flow-step .when{color:var(--blue); font-size:12.5px; font-weight:700; margin-bottom:4px; display:block;}
+  .flow-step p{color:var(--slate); font-size:14.5px; margin:0; max-width:60ch;}
+
+  /* ===== SYARAT ===== */
+  .req{background:var(--paper);}
+  .req-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  @media (max-width:800px){.req-grid{grid-template-columns:1fr;}}
+  .req-col h3{font-size:17px; margin-bottom:16px; color:var(--navy); display:flex; align-items:center; gap:10px;}
+  .req-col h3::before{content:""; width:8px; height:8px; background:var(--blue); border-radius:2px; display:inline-block;}
+  .req-col ol, .req-col ul{margin:0; padding-left:20px; color:var(--slate); font-size:14.7px;}
+  .req-col li{margin-bottom:11px; padding-left:2px;}
+
+  /* ===== BIAYA ===== */
+  .cost{background:var(--white);}
+  table.cost-table{width:100%; border-collapse:collapse; font-size:14.8px;}
+  table.cost-table th{
+    text-align:left; font-family:'Fraunces',serif; font-weight:600; color:var(--navy);
+    padding:14px 16px; border-bottom:2px solid var(--navy); font-size:15px;
+  }
+  table.cost-table td{padding:14px 16px; border-bottom:1px solid var(--line); color:var(--slate);}
+  table.cost-table tr td:last-child, table.cost-table tr th:last-child{text-align:right; font-weight:600; color:var(--navy);}
+  .cost-note{margin-top:18px; font-size:13.3px; color:var(--slate-soft);}
+
+  /* ===== FAQ ===== */
+  .faq{background:var(--paper);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; text-align:left; background:none; border:none; cursor:pointer;
+    padding:20px 0; display:flex; justify-content:space-between; align-items:center;
+    font-family:'Fraunces',serif; font-size:16.5px; color:var(--navy); gap:20px;
+  }
+  .faq-q .icon{
+    width:24px; height:24px; border-radius:50%; border:1px solid var(--blue-soft);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    color:var(--blue); font-size:15px; transition:transform .2s;
+  }
+  .faq-item.open .faq-q .icon{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .faq-a p{color:var(--slate); font-size:14.6px; padding-bottom:20px; margin:0; max-width:62ch;}
+
+  /* ===== FORM ===== */
+  .form-section{background:var(--navy); position:relative;}
+  .form-grid{display:grid; grid-template-columns:0.8fr 1.2fr; gap:56px;}
+  @media (max-width:900px){.form-grid{grid-template-columns:1fr;}}
+  .form-side h2{color:#fff; font-size:28px;}
+  .form-side p{color:#AEB9CE; font-size:14.8px; margin-top:14px; max-width:40ch;}
+  .form-side .contact-line{display:flex; gap:12px; margin-top:22px; align-items:flex-start;}
+  .form-side .contact-line .ic{color:var(--blue-soft); font-size:15px; margin-top:1px;}
+  .form-side .contact-line span{color:#D3DAE7; font-size:14px;}
+  form.reg{
+    background:var(--white); border-radius:16px; padding:32px; display:grid;
+    grid-template-columns:1fr 1fr; gap:18px;
+  }
+  @media (max-width:560px){form.reg{grid-template-columns:1fr;}}
+  form.reg .full{grid-column:1/-1;}
+  .field label{display:block; font-size:13px; font-weight:600; color:var(--navy); margin-bottom:6px;}
+  .field input, .field select, .field textarea{
+    width:100%; border:1px solid var(--line); border-radius:8px; padding:11px 13px;
+    font-family:inherit; font-size:14.3px; color:var(--ink); background:var(--paper);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:none; border-color:var(--blue); background:#fff;
+  }
+  form.reg .submit-row{grid-column:1/-1; display:flex; align-items:center; gap:16px; margin-top:6px;}
+  .form-note{font-size:12.5px; color:var(--slate-soft);}
+
+  /* ===== FOOTER ===== */
+  footer{background:#101A32; padding:52px 0 26px; color:#8E9AB3;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,0.08);}
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr;}}
+  .foot-brand{display:flex; gap:12px; align-items:center; margin-bottom:14px;}
+  .foot-brand strong{color:#fff; font-family:'Fraunces',serif; font-size:16px;}
+  footer h4{color:#fff; font-size:13.5px; margin-bottom:14px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700;}
+  footer ul{list-style:none; padding:0; margin:0;}
+  footer li{margin-bottom:10px; font-size:14px;}
+  footer a:hover{color:#fff;}
+  .foot-bottom{padding-top:22px; display:flex; justify-content:space-between; font-size:12.8px; flex-wrap:wrap; gap:10px;}
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1; transform:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav">
+    <div class="brand">
+      <div class="brand-mark">IS</div>
+      <div class="brand-text">
+        <strong>Ibnu Solihat</strong>
+        <span>PPDB Tahun Ajaran 2027/2028</span>
+      </div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#tentang">Tentang</a>
+      <a href="#jalur">Jalur Pendaftaran</a>
+      <a href="#alur">Alur</a>
+      <a href="#biaya">Biaya</a>
+      <a href="#faq">FAQ</a>
+      <a href="#daftar" class="nav-cta">Daftar Sekarang</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-eyebrow"><span class="dot"></span> Pendaftaran resmi telah dibuka</div>
+      <h1>Membentuk generasi berilmu, <em>berakhlak</em>, dan siap berkarya.</h1>
+      <p class="lead">Yayasan Ibnu Solihat membuka penerimaan peserta didik baru dengan kurikulum terpadu antara pendidikan umum dan pembinaan akhlak, didampingi guru-guru berpengalaman.</p>
+      <div class="hero-actions">
+        <a href="#daftar" class="btn btn-primary">Isi Formulir Pendaftaran</a>
+        <a href="#alur" class="btn btn-ghost">Lihat Alur Pendaftaran</a>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <span class="year"><small>Gelombang pendaftaran</small>1 Nov — 20 Des</span>
+      <div class="hero-stats">
+        <div><strong>210</strong><span>Kuota santri/siswa baru</span></div>
+        <div><strong>4</strong><span>Jalur pendaftaran</span></div>
+        <div><strong>18</strong><span>Tahun berdiri</span></div>
+        <div><strong>1:12</strong><span>Rasio guru & siswa</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="tentang">
+  <div class="wrap about-grid">
+    <div class="about-figure reveal">
+      <div class="quote-mark">&ldquo;</div>
+      <p>Bukan sekadar mencetak siswa yang pandai, tetapi menumbuhkan pribadi yang jujur, disiplin, dan bermanfaat bagi sesama.</p>
+      <div class="sign">— Pimpinan Yayasan Ibnu Solihat</div>
+    </div>
+    <div class="about-body reveal">
+      <span class="section-head kicker" style="display:block;margin-bottom:8px;">Tentang Kami</span>
+      <h2 style="margin-bottom:16px;">Lembaga pendidikan yang tumbuh bersama masyarakat</h2>
+      <p>Ibnu Solihat berdiri sebagai lembaga pendidikan yang memadukan kurikulum nasional dengan pembinaan diniyah, membekali peserta didik dengan ilmu pengetahuan sekaligus karakter yang kokoh.</p>
+      <p>Setiap tahun kami menerima peserta didik baru melalui beberapa jalur seleksi, disesuaikan dengan minat dan potensi masing-masing calon siswa.</p>
+      <ul class="about-facts">
+        <li><strong>18 Tahun</strong><span>Pengalaman mendidik</span></li>
+        <li><strong>32 Pengajar</strong><span>Lulusan dalam & luar negeri</span></li>
+        <li><strong>4 Jalur</strong><span>Reguler, Prestasi, Tahfidz, Beasiswa</span></li>
+        <li><strong>Akreditasi A</strong><span>Terakreditasi BAN-S/M</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="keunggulan">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Mengapa Ibnu Solihat</span>
+      <h2>Empat hal yang membedakan kami</h2>
+      <p>Fokus kami bukan hanya nilai akademik, tapi juga proses belajar yang membentuk kebiasaan baik jangka panjang.</p>
+    </div>
+    <div class="adv-list reveal">
+      <div class="adv-item">
+        <span class="num">01</span>
+        <div><h3>Kurikulum terpadu</h3><p>Perpaduan kurikulum nasional dan pembinaan diniyah yang dirancang saling melengkapi, bukan membebani.</p></div>
+      </div>
+      <div class="adv-item">
+        <span class="num">02</span>
+        <div><h3>Pendampingan personal</h3><p>Rasio guru dan siswa yang terjaga agar setiap anak benar-benar dikenal dan dibimbing, bukan sekadar diajar.</p></div>
+      </div>
+      <div class="adv-item">
+        <span class="num">03</span>
+        <div><h3>Fasilitas memadai</h3><p>Ruang kelas representatif, laboratorium, perpustakaan, dan asrama yang terawat untuk mendukung proses belajar.</p></div>
+      </div>
+      <div class="adv-item">
+        <span class="num">04</span>
+        <div><h3>Jejak lulusan</h3><p>Alumni kami tersebar di berbagai sekolah lanjutan dan perguruan tinggi negeri maupun swasta.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tracks" id="jalur">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Jalur Pendaftaran</span>
+      <h2>Pilih jalur yang sesuai dengan calon peserta didik</h2>
+      <p>Setiap jalur memiliki kuota dan persyaratan tambahan tersendiri di luar berkas administrasi umum.</p>
+    </div>
+    <div class="track-grid reveal">
+      <div class="track-card">
+        <span class="tag">Kuota 120</span>
+        <h3>Jalur Reguler</h3>
+        <p>Jalur utama bagi calon siswa lulusan jenjang sebelumnya tanpa persyaratan prestasi khusus.</p>
+        <ul><li>Nilai rapor 2 semester terakhir</li><li>Tes potensi akademik</li><li>Wawancara orang tua & siswa</li></ul>
+      </div>
+      <div class="track-card">
+        <span class="tag">Kuota 40</span>
+        <h3>Jalur Prestasi</h3>
+        <p>Untuk siswa dengan pencapaian akademik atau non-akademik yang dibuktikan dengan sertifikat.</p>
+        <ul><li>Sertifikat/piagam kejuaraan</li><li>Minimal tingkat kabupaten/kota</li><li>Verifikasi keabsahan dokumen</li></ul>
+      </div>
+      <div class="track-card">
+        <span class="tag">Kuota 30</span>
+        <h3>Jalur Tahfidz</h3>
+        <p>Bagi calon siswa dengan hafalan Al-Qur'an minimal 2 juz, dibuktikan lewat tes tasmi'.</p>
+        <ul><li>Tes tasmi' & tajwid</li><li>Minimal hafalan 2 juz</li><li>Rekomendasi ustadz/pembimbing</li></ul>
+      </div>
+      <div class="track-card">
+        <span class="tag">Kuota 20</span>
+        <h3>Jalur Beasiswa</h3>
+        <p>Diperuntukkan bagi keluarga kurang mampu secara ekonomi dengan potensi akademik baik.</p>
+        <ul><li>Surat keterangan tidak mampu</li><li>Survei rumah oleh tim yayasan</li><li>Nilai rapor minimal rata-rata 75</li></ul>
+      </div>
+      <div class="track-card">
+        <span class="tag">Kuota terbatas</span>
+        <h3>Jalur Pindahan</h3>
+        <p>Untuk siswa pindahan dari sekolah lain yang melanjutkan pendidikan di tengah tahun ajaran.</p>
+        <ul><li>Surat pindah dari sekolah asal</li><li>Rapor lengkap sebelumnya</li><li>Tes penempatan kelas</li></ul>
+      </div>
+      <div class="track-card">
+        <span class="tag">Info</span>
+        <h3>Belum yakin pilih jalur?</h3>
+        <p>Tim PPDB kami siap membantu menentukan jalur yang paling sesuai dengan kondisi calon siswa.</p>
+        <a href="#daftar" class="btn btn-primary" style="margin-top:6px; align-self:flex-start;">Konsultasi Gratis</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow" id="alur">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Alur Pendaftaran</span>
+      <h2>Lima langkah menuju resmi menjadi bagian Ibnu Solihat</h2>
+    </div>
+    <div class="flow-line reveal">
+      <div class="flow-step done">
+        <span class="when">Langkah 1</span>
+        <h3>Isi formulir pendaftaran online</h3>
+        <p>Lengkapi data calon siswa dan orang tua melalui formulir di bagian bawah halaman ini.</p>
+      </div>
+      <div class="flow-step">
+        <span class="when">Langkah 2</span>
+        <h3>Unggah berkas persyaratan</h3>
+        <p>Kirimkan scan/foto kartu keluarga, akta kelahiran, rapor, dan pas foto ke tim admin PPDB.</p>
+      </div>
+      <div class="flow-step">
+        <span class="when">Langkah 3</span>
+        <h3>Verifikasi & tes seleksi</h3>
+        <p>Calon siswa mengikuti tes akademik, wawancara, atau tes tambahan sesuai jalur yang dipilih.</p>
+      </div>
+      <div class="flow-step">
+        <span class="when">Langkah 4</span>
+        <h3>Pengumuman hasil seleksi</h3>
+        <p>Hasil diumumkan melalui laman resmi dan dikirimkan langsung ke kontak orang tua/wali.</p>
+      </div>
+      <div class="flow-step">
+        <span class="when">Langkah 5</span>
+        <h3>Daftar ulang & pembayaran</h3>
+        <p>Siswa yang dinyatakan lulus melakukan daftar ulang beserta pelunasan biaya sesuai jadwal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="req">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Syarat Administrasi</span>
+      <h2>Berkas yang perlu disiapkan</h2>
+    </div>
+    <div class="req-grid reveal">
+      <div class="req-col">
+        <h3>Dokumen wajib</h3>
+        <ol>
+          <li>Fotokopi Kartu Keluarga</li>
+          <li>Fotokopi akta kelahiran</li>
+          <li>Fotokopi rapor 2 semester terakhir</li>
+          <li>Pas foto berwarna terbaru (3x4, 2 lembar)</li>
+          <li>Surat keterangan sehat dari puskesmas/dokter</li>
+        </ol>
+      </div>
+      <div class="req-col">
+        <h3>Ketentuan umum</h3>
+        <ul>
+          <li>Calon siswa berusia sesuai jenjang yang dituju pada tahun ajaran berjalan</li>
+          <li>Bersedia mengikuti seluruh tata tertib sekolah</li>
+          <li>Orang tua/wali wajib hadir saat wawancara</li>
+          <li>Berkas asli dibawa saat verifikasi ulang di sekolah</li>
+          <li>Pendaftaran dinyatakan sah setelah verifikasi berkas selesai</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cost" id="biaya">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Biaya Pendidikan</span>
+      <h2>Rincian biaya tahun ajaran 2027/2028</h2>
+      <p>Biaya dapat berbeda menyesuaikan jalur pendaftaran dan kebijakan beasiswa yang berlaku.</p>
+    </div>
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="cost-table">
+        <thead>
+          <tr><th>Komponen</th><th>Keterangan</th><th>Estimasi Biaya</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Uang Pangkal</td><td>Dibayar satu kali di awal masuk</td><td>Rp 4.500.000</td></tr>
+          <tr><td>SPP Bulanan</td><td>Dibayar setiap bulan selama masa belajar</td><td>Rp 350.000</td></tr>
+          <tr><td>Seragam & Perlengkapan</td><td>2 stel seragam dan atribut sekolah</td><td>Rp 900.000</td></tr>
+          <tr><td>Buku & Modul Ajar</td><td>Paket buku sesuai jenjang</td><td>Rp 650.000</td></tr>
+          <tr><td>Kegiatan & Ekstrakurikuler</td><td>Dibayar per tahun ajaran</td><td>Rp 500.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cost-note reveal">*Komponen biaya dapat berubah sewaktu-waktu. Siswa jalur beasiswa mendapat keringanan sesuai hasil verifikasi tim yayasan.</p>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Pertanyaan Umum</span>
+      <h2>Yang sering ditanyakan calon orang tua</h2>
+    </div>
+    <div class="reveal">
+      <div class="faq-item">
+        <button class="faq-q"><span>Apakah pendaftaran bisa dilakukan sepenuhnya online?</span><span class="icon">+</span></button>
+        <div class="faq-a"><p>Bisa. Pengisian formulir dan unggah berkas dilakukan online, namun verifikasi berkas asli dan tes seleksi tetap dilaksanakan langsung di sekolah.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Apakah ada potongan biaya untuk anak kedua yang mendaftar bersamaan?</span><span class="icon">+</span></button>
+        <div class="faq-a"><p>Ada. Keluarga yang mendaftarkan lebih dari satu anak pada tahun ajaran yang sama berhak mendapat keringanan pada komponen uang pangkal.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Bagaimana jika kuota jalur yang saya pilih sudah penuh?</span><span class="icon">+</span></button>
+        <div class="faq-a"><p>Tim PPDB akan menghubungi Anda untuk menawarkan jalur alternatif yang masih tersedia sesuai dengan kondisi calon siswa.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Kapan pengumuman hasil seleksi disampaikan?</span><span class="icon">+</span></button>
+        <div class="faq-a"><p>Pengumuman dilakukan maksimal 7 hari kerja setelah calon siswa menyelesaikan seluruh rangkaian tes dan wawancara.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="daftar">
+  <div class="wrap form-grid">
+    <div class="form-side">
+      <span class="kicker" style="color:var(--blue-soft); font-weight:700; font-size:13.5px;">Formulir Pendaftaran</span>
+      <h2 style="margin-top:10px;">Mulai langkah pertama menuju Ibnu Solihat</h2>
+      <p>Isi data di samping, tim PPDB kami akan menghubungi Anda dalam 1x24 jam kerja untuk konfirmasi dan langkah selanjutnya.</p>
+      <div class="contact-line"><span class="ic">☎</span><span>0812-3456-7890 (WhatsApp Admin PPDB)</span></div>
+      <div class="contact-line"><span class="ic">✉</span><span>ppdb@ibnusolihat.sch.id</span></div>
+      <div class="contact-line"><span class="ic">⌂</span><span>Jl. Pendidikan No. 45, Bogor, Jawa Barat</span></div>
+    </div>
+    <form class="reg" id="regForm">
+      <div class="field">
+        <label for="nama">Nama lengkap calon siswa</label>
+        <input type="text" id="nama" name="nama" required placeholder="Contoh: Ahmad Fauzi">
+      </div>
+      <div class="field">
+        <label for="jenjang">Jenjang yang dituju</label>
+        <select id="jenjang" name="jenjang" required>
+          <option value="">Pilih jenjang</option>
+          <option>SD</option><option>SMP</option><option>SMA</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="jalur">Jalur pendaftaran</label>
+        <select id="jalur" name="jalur" required>
+          <option value="">Pilih jalur</option>
+          <option>Reguler</option><option>Prestasi</option><option>Tahfidz</option>
+          <option>Beasiswa</option><option>Pindahan</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="tgl">Tanggal lahir</label>
+        <input type="date" id="tgl" name="tgl" required>
+      </div>
+      <div class="field">
+        <label for="ortu">Nama orang tua/wali</label>
+        <input type="text" id="ortu" name="ortu" required placeholder="Nama orang tua/wali">
+      </div>
+      <div class="field">
+        <label for="hp">Nomor WhatsApp aktif</label>
+        <input type="tel" id="hp" name="hp" required placeholder="08xxxxxxxxxx">
+      </div>
+      <div class="field full">
+        <label for="alamat">Alamat domisili</label>
+        <textarea id="alamat" name="alamat" rows="3" placeholder="Alamat lengkap tempat tinggal"></textarea>
+      </div>
+      <div class="submit-row">
+        <button type="submit" class="btn btn-primary">Kirim Pendaftaran</button>
+        <span class="form-note">Data Anda hanya digunakan untuk proses PPDB.</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <div class="brand-mark" style="width:36px;height:36px;font-size:16px;">IS</div>
+          <strong>Yayasan Ibnu Solihat</strong>
+        </div>
+        <p style="font-size:13.8px; max-width:34ch;">Lembaga pendidikan yang memadukan ilmu pengetahuan umum dan pembinaan akhlak sejak lebih dari 18 tahun.</p>
+      </div>
+      <div>
+        <h4>Tautan</h4>
+        <ul>
+          <li><a href="#tentang">Tentang Kami</a></li>
+          <li><a href="#jalur">Jalur Pendaftaran</a></li>
+          <li><a href="#biaya">Biaya Pendidikan</a></li>
+          <li><a href="#faq">Pertanyaan Umum</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <ul>
+          <li>0812-3456-7890</li>
+          <li>ppdb@ibnusolihat.sch.id</li>
+          <li>Jl. Pendidikan No. 45, Bogor</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Yayasan Ibnu Solihat. Seluruh hak cipta dilindungi.</span>
+      <span>Dibuat untuk keperluan PPDB Tahun Ajaran 2027/2028</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const ans = item.querySelector('.faq-a');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  revealEls.forEach(el => io.observe(el));
+
+  // Form submit (demo — no backend)
+  document.getElementById('regForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('Terima kasih! Pendaftaran Anda telah kami terima. Tim PPDB akan menghubungi Anda segera.');
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
